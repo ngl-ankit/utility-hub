@@ -75,17 +75,14 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button size="sm" className="hidden md:flex rounded-full px-6 font-bold shadow-xl shadow-primary/10 active:scale-95 transition-all">
-              Get Pro
-            </Button>
-            {/* Mobile Menu Toggle */}
-            <div className="md:hidden">
-              <Button variant="ghost" size="icon" className="rounded-2xl glass" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
+            <div className="flex items-center gap-3">
+              {/* Mobile Menu Toggle */}
+              <div className="md:hidden">
+                <Button variant="ghost" size="icon" className="rounded-2xl glass" onClick={() => setIsOpen(!isOpen)}>
+                  {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </Button>
+              </div>
             </div>
-          </div>
         </div>
 
         {/* Mobile Menu */}
