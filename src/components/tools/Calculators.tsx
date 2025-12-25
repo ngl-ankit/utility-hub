@@ -10,7 +10,7 @@ import { Calculator as CalcIcon, Percent, Ruler, Scale, Thermometer, Briefcase, 
 
 export function Calculators() {
   return (
-    <section id="calculators" className="py-20 bg-muted/30">
+    <section id="calculators" className="py-20 bg-gradient-to-b from-blue-50/50 to-transparent rounded-3xl">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Essential Calculators</h2>
