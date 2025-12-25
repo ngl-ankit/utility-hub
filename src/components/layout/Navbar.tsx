@@ -41,12 +41,14 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
+    <nav className="fixed top-0 z-50 w-full border-b bg-background/60 backdrop-blur-xl">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tighter">
-            <Hammer className="h-6 w-6 text-primary" />
-            <span>UtilHub</span>
+          <Link href="/" className="flex items-center gap-2 font-bold text-2xl tracking-tight font-heading group">
+            <div className="p-1.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <Hammer className="h-5 w-5" />
+            </div>
+            <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">UtilHub</span>
           </Link>
 
           {/* Desktop Menu */}
