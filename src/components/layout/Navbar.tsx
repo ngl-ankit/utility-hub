@@ -104,13 +104,10 @@ export function Navbar() {
                 >
                   {item.name}
                 </Link>
-              ))}
-              <Button className="w-full mt-2 rounded-2xl h-12 text-lg font-bold">
-                Get Pro
-              </Button>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </nav>
     </div>
   );
