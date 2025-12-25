@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -7,10 +8,15 @@ import { Calculators } from "@/components/tools/Calculators";
 import { Converters } from "@/components/tools/Converters";
 import { TextTools } from "@/components/tools/TextTools";
 import { TimeTools } from "@/components/tools/TimeTools";
-import { FAQSection, ContactSection } from "@/components/sections/FAQAndContact";
-import { Zap, Shield } from "lucide-react";
+import * as Icons from "lucide-react";
+
+const FAQSection = dynamic(() => import("@/components/sections/FAQAndContact").then(mod => mod.FAQSection), { ssr: false });
+const ContactSection = dynamic(() => import("@/components/sections/FAQAndContact").then(mod => mod.ContactSection), { ssr: false });
 
 export default function Home() {
+  const ZapIcon = Icons.Zap;
+  const ShieldIcon = Icons.Shield;
+
   return (
     <div className="flex min-h-screen flex-col bg-background/50 selection:bg-primary/20">
       <div className="mesh-bg" />
@@ -32,7 +38,7 @@ export default function Home() {
               <div className="p-8 rounded-[2rem] border border-white/40 bg-white/30 backdrop-blur-xl shadow-2xl shadow-black/5 hover:shadow-primary/5 transition-all duration-500 group">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-10 w-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                    {Zap && <Zap className="h-5 w-5" />}
+                    {ZapIcon && <ZapIcon className="h-5 w-5" />}
                   </div>
                   <h3 className="font-bold text-xl heading-gradient">Trending</h3>
                 </div>
@@ -67,7 +73,7 @@ export default function Home() {
                 </p>
                 <div className="mt-5 relative z-10">
                   <div className="inline-flex items-center gap-2 text-xs font-black text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
-                    {Shield && <Shield className="h-3 w-3" />} Encrypted
+                    {ShieldIcon && <ShieldIcon className="h-3 w-3" />} Encrypted
                   </div>
                 </div>
               </div>
