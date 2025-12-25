@@ -9,7 +9,7 @@ import { Ruler, Scale, Thermometer, Coins, Binary } from "lucide-react";
 
 export function Converters() {
   return (
-    <section id="converters" className="py-20">
+    <section id="converters" className="py-20 bg-gradient-to-b from-purple-50/50 to-transparent rounded-3xl">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Smart Converters</h2>
