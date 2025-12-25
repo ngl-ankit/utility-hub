@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, Globe } from "lucide-react";
+import { ArrowRight, Zap, Shield, Globe, Cpu } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -20,19 +21,24 @@ export function Hero() {
             Fast, elegant, and entirely client-side.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500">
-            <Button size="xl" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95 bg-primary text-white">
-              Launch Tools <ArrowRight className="ml-2 h-5 w-5" />
+            <Button asChild size="xl" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95 bg-primary text-white">
+              <Link href="#calculators">
+                Launch Tools <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
-            <Button size="xl" variant="outline" className="h-14 px-10 text-lg rounded-full backdrop-blur-sm hover:bg-white/50 transition-all active:scale-95 border-primary/20">
-              Documentation
+            <Button asChild size="xl" variant="outline" className="h-14 px-10 text-lg rounded-full backdrop-blur-sm hover:bg-white/50 transition-all active:scale-95 border-primary/20">
+              <Link href="#faqs">
+                Documentation
+              </Link>
             </Button>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 mt-20 w-full max-w-5xl animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-700">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-20 w-full max-w-6xl animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-700">
             {[
               { icon: Zap, title: "Pure Performance", desc: "No server overhead, instant results." },
               { icon: Shield, title: "Zero Data-Mining", desc: "Your data never leaves your browser." },
               { icon: Globe, title: "Open & Accessible", desc: "Free forever, for everyone, everywhere." },
+              { icon: Cpu, title: "Modern Engine", desc: "Powered by the latest web technologies." },
             ].map((feature, i) => (
               <div key={i} className="flex flex-col items-center gap-4 p-8 rounded-3xl border border-white/40 bg-white/30 backdrop-blur-xl hover:bg-white/50 transition-all hover:translate-y-[-4px] shadow-sm hover:shadow-xl group">
                 <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform shadow-inner">
