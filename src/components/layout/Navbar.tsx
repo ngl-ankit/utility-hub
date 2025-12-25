@@ -19,9 +19,11 @@ const navItems = [
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState("Home");
+  const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
       const sections = navItems.map(item => item.href.substring(1));
       const current = sections.find(section => {
         const element = document.getElementById(section);
@@ -41,25 +43,30 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b bg-background/60 backdrop-blur-xl">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-2xl tracking-tight font-heading group">
-            <div className="p-1.5 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+    <div className="fixed top-0 z-50 w-full flex justify-center p-4 md:p-6 pointer-events-none">
+      <nav className={cn(
+        "w-full max-w-7xl pointer-events-auto transition-all duration-500 rounded-3xl",
+        scrolled ? "glass py-2 px-6" : "bg-transparent py-4 px-4"
+      )}>
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 font-bold text-2xl tracking-tighter font-heading group">
+            <div className="p-2 rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
               <Hammer className="h-5 w-5" />
             </div>
-            <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">UtilHub</span>
+            <span className="heading-gradient">UtilHub</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-black/5 backdrop-blur-sm">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  activeItem === item.name ? "text-primary" : "text-muted-foreground"
+                  "px-4 py-2 text-sm font-semibold transition-all rounded-xl",
+                  activeItem === item.name 
+                    ? "bg-white text-primary shadow-sm" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-white/50"
                 )}
                 onClick={() => setActiveItem(item.name)}
               >
@@ -68,38 +75,46 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <div className="flex items-center gap-3">
+            <Button size="sm" className="hidden md:flex rounded-full px-6 font-bold shadow-xl shadow-primary/10 active:scale-95 transition-all">
+              Get Pro
             </Button>
+            {/* Mobile Menu Toggle */}
+            <div className="md:hidden">
+              <Button variant="ghost" size="icon" className="rounded-2xl glass" onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden border-t bg-background">
-          <div className="flex flex-col p-4 gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  activeItem === item.name ? "text-primary" : "text-muted-foreground"
-                )}
-                onClick={() => {
-                  setIsOpen(false);
-                  setActiveItem(item.name);
-                }}
-              >
-                {item.name}
-              </Link>
-            ))}
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden mt-4 p-4 rounded-3xl glass border shadow-2xl animate-in fade-in zoom-in-95 duration-300">
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "px-4 py-3 text-base font-semibold transition-all rounded-2xl",
+                    activeItem === item.name ? "bg-primary text-white shadow-lg" : "text-muted-foreground hover:bg-black/5"
+                  )}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setActiveItem(item.name);
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Button className="w-full mt-2 rounded-2xl h-12 text-lg font-bold">
+                Get Pro
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
+    </div>
   );
 }
