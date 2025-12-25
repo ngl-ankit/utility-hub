@@ -8,6 +8,7 @@ import { Converters } from "@/components/tools/Converters";
 import { TextTools } from "@/components/tools/TextTools";
 import { TimeTools } from "@/components/tools/TimeTools";
 import { FAQSection, ContactSection } from "@/components/sections/FAQAndContact";
+import { Zap, Shield } from "lucide-react";
 
 export default function Home() {
   return (
