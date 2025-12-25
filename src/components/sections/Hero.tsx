@@ -3,18 +3,18 @@ import { ArrowRight, Zap, Shield, Globe } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-b from-primary/5 via-transparent to-transparent">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center gap-8">
-          <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-muted/50">
+          <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-white/50 backdrop-blur-sm shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
-            New Tools Added Weekly
+            <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">New Tools Added Weekly</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter max-w-3xl">
-            Everything You Need, <span className="text-primary">All In One Place</span>
+          <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight max-w-4xl font-heading">
+            Everything You Need, <span className="bg-gradient-to-r from-primary via-blue-600 to-indigo-600 bg-clip-text text-transparent">All In One Place</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
-            UtilHub provides a suite of fast, secure, and user-friendly tools for your daily tasks. 
+          <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            UtilHub provides a suite of <span className="text-foreground font-medium">fast, secure, and user-friendly</span> tools for your daily tasks. 
             No sign-ups, no trackers, just pure utility.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
