@@ -3,59 +3,56 @@ import { ArrowRight, Zap, Shield, Globe } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-b from-primary/5 via-transparent to-transparent">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center gap-8">
-          <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium bg-white/50 backdrop-blur-sm shadow-sm">
+    <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col items-center text-center gap-10">
+          <div className="inline-flex items-center rounded-full border border-primary/20 px-4 py-1.5 text-xs font-semibold bg-primary/5 backdrop-blur-md shadow-inner text-primary animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
-            <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">New Tools Added Weekly</span>
+            PROFESSIONAL GRADE UTILITIES
           </div>
-          <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight max-w-4xl font-heading">
-            Everything You Need, <span className="bg-gradient-to-r from-primary via-blue-600 to-indigo-600 bg-clip-text text-transparent">All In One Place</span>
+          <h1 className="text-5xl md:text-8xl font-black tracking-tight max-w-5xl font-heading leading-[0.9] animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-150">
+            <span className="heading-gradient">Simple Tools for</span>
+            <br />
+            <span className="bg-gradient-to-r from-primary via-indigo-500 to-purple-600 bg-clip-text text-transparent italic">Extraordinary</span> <span className="heading-gradient">Results</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            UtilHub provides a suite of <span className="text-foreground font-medium">fast, secure, and user-friendly</span> tools for your daily tasks. 
-            No sign-ups, no trackers, just pure utility.
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
+            A curated suite of <span className="text-foreground font-semibold">privacy-focused</span> web utilities. 
+            Fast, elegant, and entirely client-side.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="h-12 px-8 text-base">
-              Explore Tools <ArrowRight className="ml-2 h-5 w-5" />
+          <div className="flex flex-col sm:flex-row gap-5 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500">
+            <Button size="xl" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95 bg-primary text-white">
+              Launch Tools <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base">
-              View All Categories
+            <Button size="xl" variant="outline" className="h-14 px-10 text-lg rounded-full backdrop-blur-sm hover:bg-white/50 transition-all active:scale-95 border-primary/20">
+              Documentation
             </Button>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 w-full max-w-4xl">
-            <div className="flex flex-col items-center gap-2 p-6 rounded-2xl border bg-card hover:shadow-lg transition-shadow">
-              <div className="p-3 rounded-full bg-primary/10 text-primary">
-                <Zap className="h-6 w-6" />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 mt-20 w-full max-w-5xl animate-in fade-in slide-in-from-bottom-20 duration-1000 delay-700">
+            {[
+              { icon: Zap, title: "Pure Performance", desc: "No server overhead, instant results." },
+              { icon: Shield, title: "Zero Data-Mining", desc: "Your data never leaves your browser." },
+              { icon: Globe, title: "Open & Accessible", desc: "Free forever, for everyone, everywhere." },
+            ].map((feature, i) => (
+              <div key={i} className="flex flex-col items-center gap-4 p-8 rounded-3xl border border-white/40 bg-white/30 backdrop-blur-xl hover:bg-white/50 transition-all hover:translate-y-[-4px] shadow-sm hover:shadow-xl group">
+                <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform shadow-inner">
+                  <feature.icon className="h-7 w-7" />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="font-bold text-lg">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-snug">{feature.desc}</p>
+                </div>
               </div>
-              <h3 className="font-bold">Lightning Fast</h3>
-              <p className="text-sm text-muted-foreground">Processed entirely in your browser.</p>
-            </div>
-            <div className="flex flex-col items-center gap-2 p-6 rounded-2xl border bg-card hover:shadow-lg transition-shadow">
-              <div className="p-3 rounded-full bg-primary/10 text-primary">
-                <Shield className="h-6 w-6" />
-              </div>
-              <h3 className="font-bold">Privacy First</h3>
-              <p className="text-sm text-muted-foreground">Your data never leaves your device.</p>
-            </div>
-            <div className="flex flex-col items-center gap-2 p-6 rounded-2xl border bg-card hover:shadow-lg transition-shadow">
-              <div className="p-3 rounded-full bg-primary/10 text-primary">
-                <Globe className="h-6 w-6" />
-              </div>
-              <h3 className="font-bold">Always Free</h3>
-              <p className="text-sm text-muted-foreground">Professional tools at no cost to you.</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
       
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full max-w-7xl h-full blur-3xl opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full" />
+      {/* Abstract Background Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[10%] -right-[10%] w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[120px] animate-pulse [animation-delay:2s]" />
+        <div className="absolute -bottom-[20%] left-[20%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[120px] animate-pulse [animation-delay:4s]" />
       </div>
     </section>
   );
