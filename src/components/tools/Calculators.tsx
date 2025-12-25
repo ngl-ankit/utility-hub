@@ -126,6 +126,12 @@ function EMICalculator() {
     setEmi(Math.round(emiValue));
   };
 
+  const reset = () => {
+    setLoan(1000000);
+    setRate(8.5);
+    setTenure(20);
+  };
+
   React.useEffect(calculateEMI, [loan, rate, tenure]);
 
   return (
@@ -153,6 +159,7 @@ function EMICalculator() {
           <div className="text-sm text-muted-foreground uppercase tracking-wider">Monthly EMI</div>
           <div className="text-3xl font-bold text-primary">₹ {emi.toLocaleString()}</div>
         </div>
+        <Button variant="outline" className="w-full" onClick={reset}>Reset</Button>
       </CardContent>
     </Card>
   );
@@ -162,6 +169,12 @@ function GSTCalculator() {
   const [amount, setAmount] = React.useState<number>(1000);
   const [rate, setRate] = React.useState<number>(18);
   const [isInclusive, setIsInclusive] = React.useState(false);
+
+  const reset = () => {
+    setAmount(1000);
+    setRate(18);
+    setIsInclusive(false);
+  };
 
   const gstAmount = isInclusive 
     ? amount - (amount * (100 / (100 + rate)))
@@ -212,6 +225,7 @@ function GSTCalculator() {
             <div className="font-bold text-primary">₹ {total.toFixed(2)}</div>
           </div>
         </div>
+        <Button variant="outline" className="w-full" onClick={reset}>Reset</Button>
       </CardContent>
     </Card>
   );
@@ -220,6 +234,11 @@ function GSTCalculator() {
 function BMICalculator() {
   const [weight, setWeight] = React.useState<number>(70);
   const [height, setHeight] = React.useState<number>(170);
+
+  const reset = () => {
+    setWeight(70);
+    setHeight(170);
+  };
 
   const bmi = weight / Math.pow(height / 100, 2);
   
@@ -254,6 +273,7 @@ function BMICalculator() {
           <div className="text-3xl font-bold">{bmi.toFixed(1)}</div>
           <div className={`text-lg font-medium mt-1 ${status.color}`}>{status.label}</div>
         </div>
+        <Button variant="outline" className="w-full" onClick={reset}>Reset</Button>
       </CardContent>
     </Card>
   );
@@ -283,6 +303,11 @@ function AgeCalculator() {
     setAge({ y: years, m: months, d: days });
   };
 
+  const reset = () => {
+    setDob("");
+    setAge(null);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -296,7 +321,10 @@ function AgeCalculator() {
           <Label>Date of Birth</Label>
           <Input type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
         </div>
-        <Button className="w-full" onClick={calculateAge}>Calculate Age</Button>
+        <div className="grid grid-cols-2 gap-2">
+          <Button onClick={calculateAge}>Calculate</Button>
+          <Button variant="outline" onClick={reset}>Reset</Button>
+        </div>
         {age && (
           <div className="grid grid-cols-3 gap-2">
             <div className="p-3 bg-primary/10 rounded-lg text-center">
@@ -323,10 +351,16 @@ function PercentageCalculator() {
   const [num2, setNum2] = React.useState<number>(0);
   const [mode, setMode] = React.useState("of"); // of, what, inc
 
+  const reset = () => {
+    setNum1(0);
+    setNum2(0);
+    setMode("of");
+  };
+
   const getResult = () => {
     if (mode === "of") return (num1 / 100) * num2;
-    if (mode === "what") return (num1 / num2) * 100;
-    if (mode === "inc") return ((num2 - num1) / num1) * 100;
+    if (mode === "what") return (num2 === 0 ? 0 : (num1 / num2) * 100);
+    if (mode === "inc") return (num1 === 0 ? 0 : ((num2 - num1) / num1) * 100);
     return 0;
   };
 
