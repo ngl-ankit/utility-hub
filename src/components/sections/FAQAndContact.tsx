@@ -10,7 +10,7 @@ export function FAQSection() {
   const faqs = [
     {
       q: "Are these tools free to use?",
-      a: "Yes, all tools on UtilHub are 100% free and will always remain so. We support the platform through non-intrusive advertisements."
+      a: "Yes, all tools on UtilHub are 100% free and will always remain so. We focus on providing the best user experience without any hidden costs."
     },
     {
       q: "Is my data safe?",
@@ -39,8 +39,8 @@ export function FAQSection() {
           <Accordion type="single" collapsible>
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger>{faq.q}</AccordionTrigger>
-                <AccordionContent>{faq.a}</AccordionContent>
+                <AccordionTrigger className="text-left">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -52,72 +52,61 @@ export function FAQSection() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Get in Touch</h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-muted-foreground leading-relaxed">
               Have a suggestion for a new tool? Found a bug? We'd love to hear from you. 
               Our team typically responds within 24-48 hours.
             </p>
-            <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full bg-primary/10 text-primary">
+            <div className="mt-8 space-y-6">
+              <div className="flex items-center gap-4 group">
+                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
-                <span>support@utilhub.io</span>
+                <div>
+                  <p className="text-sm font-semibold">Email Us</p>
+                  <p className="text-sm text-muted-foreground">support@utilhub.io</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full bg-primary/10 text-primary">
+              <div className="flex items-center gap-4 group">
+                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
-                <span>Remote First, Global Team</span>
+                <div>
+                  <p className="text-sm font-semibold">Location</p>
+                  <p className="text-sm text-muted-foreground">Remote First, Global Team</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="bg-card rounded-2xl border p-8 shadow-sm">
+          <div className="bg-card rounded-2xl border p-8 shadow-sm hover:shadow-md transition-all">
             <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Message sent successfully!"); }}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="first-name">First Name</Label>
-                  <Input id="first-name" placeholder="John" required />
+                  <Input id="first-name" placeholder="John" className="bg-background" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="last-name">Last Name</Label>
-                  <Input id="last-name" placeholder="Doe" required />
+                  <Input id="last-name" placeholder="Doe" className="bg-background" required />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="john@example.com" required />
+                <Input id="email" type="email" placeholder="john@example.com" className="bg-background" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="How can we help you?" className="min-h-[120px]" required />
+                <Textarea id="message" placeholder="How can we help you?" className="min-h-[120px] bg-background" required />
               </div>
-              <Button type="submit" className="w-full">Send Message</Button>
+              <Button type="submit" className="w-full h-11">Send Message</Button>
             </form>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-export function AdBlock({ position }: { position: "top" | "sidebar" | "content" }) {
-  const styles = {
-    top: "w-full h-[90px] mb-8",
-    sidebar: "w-full h-[600px]",
-    content: "w-full h-[250px] my-8"
-  };
-
-  return (
-    <div className={`${styles[position]} bg-muted/50 border-2 border-dashed border-muted-foreground/20 rounded-lg flex items-center justify-center overflow-hidden`}>
-      <div className="text-center">
-        <p className="text-xs font-semibold text-muted-foreground/40 uppercase tracking-widest mb-1">Advertisement</p>
-        <div className="text-[10px] text-muted-foreground/30">Google AdSense Placement</div>
-      </div>
-    </div>
   );
 }
