@@ -10,7 +10,7 @@ import { Clock, Timer, Hourglass, CalendarRange } from "lucide-react";
 
 export function TimeTools() {
   return (
-    <section id="time-date" className="py-20">
+    <section id="time-date" className="py-20 bg-gradient-to-b from-orange-50/50 to-transparent rounded-3xl">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Time & Date Tools</h2>
