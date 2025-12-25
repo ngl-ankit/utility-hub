@@ -395,11 +395,12 @@ function PercentageCalculator() {
             <Input type="number" value={num2} onChange={(e) => setNum2(Number(e.target.value))} />
           </div>
         </div>
-        <div className="p-4 bg-muted rounded-lg text-center">
-          <div className="text-sm text-muted-foreground uppercase tracking-wider">Result</div>
-          <div className="text-3xl font-bold">{getResult().toFixed(2)} {mode === "of" ? "" : "%"}</div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
+          <div className="p-4 bg-muted rounded-lg text-center">
+            <div className="text-sm text-muted-foreground uppercase tracking-wider">Result</div>
+            <div className="text-3xl font-bold">{getResult().toFixed(2)} {mode === "of" ? "" : "%"}</div>
+          </div>
+          <Button variant="outline" className="w-full" onClick={reset}>Reset</Button>
+        </CardContent>
+      </Card>
+    );
+  }
